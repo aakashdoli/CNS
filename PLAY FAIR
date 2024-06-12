@@ -1,0 +1,72 @@
+import string
+n=[]
+plain_text=input("enter text")
+key=input("enter key")
+matrix = [["0" for i in range (0,5)]for j in range (0,5)]
+m=list(key+string.ascii_lowercase)
+for i in m:
+    if i not in n and i!="j":
+        n.append(i)
+    
+k=0
+print(n)
+for i in range(0,5):
+    for j in range(0,5):
+        matrix[i][j]=n[k]
+        k+=1    
+print(matrix)
+i=0
+j=0
+l=[]
+while j<len(plain_text):
+    l.append(plain_text[j])
+    if j!=len(plain_text)-1 and plain_text[j]==plain_text[j+1]:
+        l.append("x")
+    j+=1
+if len(l)%2!=0:
+    l.append("x")
+print(l)
+ct=""
+k=0
+while k<len(l):
+    for i in range(0,5):
+        for j in range(0,5):
+            if k!=len(l)-1 and matrix[i][j]==l[k]:
+                a=i
+                b=j
+            if k!=len(l)-1 and matrix[i][j]==l[k+1]:
+                c=i
+                d=j
+    if b==d:
+        ct+=matrix[(a+1)%5][b]
+        ct+=matrix[(c+1)%5][d]
+    elif a==c:
+        ct+=matrix[a][(b+1)%5]
+        ct+=matrix[c][(d+1)%5]
+    else:
+        ct+=matrix[a][d]
+        ct+=matrix[c][b]
+    k+=2
+print(ct)
+pt=""
+k=0
+while k<len(l):
+    for i in range(0,5):
+        for j in range(0,5):
+            if k!=len(ct)-1 and matrix[i][j]==ct[k]:
+                a=i
+                b=j
+            if k!=len(ct)-1 and matrix[i][j]==ct[k+1]:
+                c=i
+                d=j
+    if b==d:
+        pt+=matrix[(a-1)%5][b]
+        pt+=matrix[(c-1)%5][d]
+    elif a==c:
+        pt+=matrix[a][(b-1)%5]
+        pt+=matrix[c][(d-1)%5]
+    else:
+        pt+=matrix[a][d]
+        pt+=matrix[c][b]
+    k+=2
+print(pt)
