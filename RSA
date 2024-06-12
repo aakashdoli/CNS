@@ -1,0 +1,45 @@
+import math
+from sympy import mod_inverse
+
+# Step 1
+p = int(input("Enter p value: "))
+q = int(input("Enter q value: "))
+
+# Step 2
+n = p * q
+print("n =", n)
+
+# Step 3
+phi = (p - 1) * (q - 1)
+
+# Step 4
+e = 2
+while e < phi:
+    if math.gcd(e, phi) == 1:
+        break
+    else:
+        e += 1
+
+print("e =", e)
+
+# Step 5
+# Calculate d using modular inverse
+d = mod_inverse(e, phi)
+print("d =", d)
+print(f'Public key: ({e}, {n})')
+print(f'Private key: ({d}, {n})')
+
+# Plain text
+msg = int(input("Enter original message: "))
+if msg >= n:
+    raise ValueError("The message must be less than n")
+
+print(f'Original message: {msg}')
+
+# Encryption
+C = pow(msg, e, n)
+print(f'Encrypted message: {C}')
+
+# Decryption
+M = pow(C, d, n)
+print(f'Decrypted message: {M}')
