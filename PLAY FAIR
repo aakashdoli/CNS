@@ -1,7 +1,7 @@
 import string
 n=[]
-plain_text=input("enter text")
-key=input("enter key")
+plain_text=input("enter text:")
+key=input("enter key:")
 matrix = [["0" for i in range (0,5)]for j in range (0,5)]
 m=list(key+string.ascii_lowercase)
 for i in m:
