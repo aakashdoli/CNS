@@ -1,0 +1,15 @@
+#caeser cipher
+def main():
+    text = input("Enter the text to be encrypted: ")
+    key = int(input("Enter the key for encryption: "))
+    
+    encrypted_text = ''.join(
+        chr((ord(c) - 65 + key) % 26 + 65) if c.isupper() else
+        chr((ord(c) - 97 + key) % 26 + 97) if c.islower() else
+        c for c in text
+    )
+    
+    print(f"The encrypted message: {encrypted_text}")
+
+if __name__ == "__main__":
+    main()
