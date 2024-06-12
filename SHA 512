@@ -1,0 +1,10 @@
+import hashlib
+
+def cal_sha512_digest(text):
+    encoded_text = text.encode('utf-8')
+    sha512_digest = hashlib.sha512(encoded_text).hexdigest()
+    return sha512_digest
+
+text = "aakash"
+sha512_digest = cal_sha512_digest(text)
+print("sha512 digest:", sha512_digest)
