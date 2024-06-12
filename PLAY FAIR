@@ -48,25 +48,3 @@ while k<len(l):
         ct+=matrix[c][b]
     k+=2
 print(ct)
-pt=""
-k=0
-while k<len(l):
-    for i in range(0,5):
-        for j in range(0,5):
-            if k!=len(ct)-1 and matrix[i][j]==ct[k]:
-                a=i
-                b=j
-            if k!=len(ct)-1 and matrix[i][j]==ct[k+1]:
-                c=i
-                d=j
-    if b==d:
-        pt+=matrix[(a-1)%5][b]
-        pt+=matrix[(c-1)%5][d]
-    elif a==c:
-        pt+=matrix[a][(b-1)%5]
-        pt+=matrix[c][(d-1)%5]
-    else:
-        pt+=matrix[a][d]
-        pt+=matrix[c][b]
-    k+=2
-print(pt)
